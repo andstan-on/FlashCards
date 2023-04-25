@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>{{ object.name }}</h1>
+  <p>{{ object.description }}</p>
+  <ul>
+    {% for card in object.card_set.all %}
+      <li>
+        <a href="{% url 'card_detail' deck_pk=card.deck.id pk=card.id %}">{{ card.question }}</a>
+      </li>
+    {% empty %}
+      <li>No cards yet.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'card_create' object.id %}">Add a card</a>
+{% endblock %}

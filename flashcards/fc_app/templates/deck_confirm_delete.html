@@ -1,0 +1,17 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  {% if confirm_delete %}
+    <h1>Delete Deck</h1>
+    <p>Are you sure you want to delete the "{{ object.name }}" deck?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" formaction="{% url 'deck_delete' object.pk %}">Delete</button>
+      <a href="{% url 'deck_detail' object.pk %}">Cancel</a>
+    </form>
+  {% else %}
+    <h1>Deck Deleted</h1>
+    <p>The "{{ object.name }}" deck was deleted successfully.</p>
+    <a href="{% url 'decks' %}">Back to Deck List</a>
+  {% endif %}
+{% endblock %}

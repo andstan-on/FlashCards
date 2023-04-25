@@ -1,0 +1,8 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>{{ card.question }}</h2>
+  <p>{{ card.answer }}</p>
+  <a href="{% url 'card_update' card.pk %}">Update Card</a>
+  <a href="{% url 'card_confirm_delete' deck_pk=card.deck.pk pk=card.pk %}">Delete Card</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+      <div class="col-md-6 text-center">
+          <h3>Welcome to Flash Cards website!</h3>
+          <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+      </div>
+  </div>
+
+
+{% endblock %}

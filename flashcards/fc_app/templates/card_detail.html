@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block script %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/devibeans.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+{% endblock %}
+
+{% block content %}
+  <h2>{{ card.question }}</h2>
+  <p>{{ card.answer | safe }}</p>
+  <a href="{% url 'card_update' deck_pk=card.deck.pk pk=card.pk %}" class="btn btn-primary">Edit</a>
+  <form method="post" action="{% url 'card_delete' deck_pk=card.deck.pk pk=card.pk %}" class="d-inline">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.path }}">
+    <button type="submit" class="btn btn-danger">Delete</button>
+  </form>
+{% endblock %}

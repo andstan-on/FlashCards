@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div class="row vh-100 bg-secondary rounded mx-0">
+  <div class="col-sm-12 col-xl-6">
+    <div class="bg-secondary rounded h-100 p-4">
+      <h1 class="mb-4">Decks</h1>
+      <ul class="list-group list-group-flush">
+        {% for deck in object_list %}
+          <li class="list-group-item bg-transparent">
+            <a href="{% url 'deck_detail' deck.id %}">{{ deck.name }}</a> ({{ deck.card_set.count }} cards)
+          </li>
+        {% empty %}
+          <li class="list-group-item bg-transparent">No decks yet.</li>
+        {% endfor %}
+        <li class="list-group-item bg-transparent"><a href="{% url 'deck_create' %}">Create a new deck.</a></li>
+      </ul>
+    </div>
+  </div>
+  </div>
+{% endblock %}
